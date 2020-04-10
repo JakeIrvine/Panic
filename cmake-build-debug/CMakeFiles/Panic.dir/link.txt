@@ -1,2 +1,0 @@
-/usr/bin/ar qc libPanic.a  CMakeFiles/Panic.dir/src/Console.cpp.o CMakeFiles/Panic.dir/src/Window.cpp.o CMakeFiles/Panic.dir/src/panic.cpp.o
-/usr/bin/ranlib libPanic.a
