@@ -6,12 +6,14 @@
 #define PANICLIB_PANIC_H
 
 #include "Window.h"
+#include "Font.h"
 
 namespace Panic {
 
 void init();
 
 bool initSDL();
+bool initSDLttf();
 
 void quit();
 }

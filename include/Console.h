@@ -5,6 +5,9 @@
 #ifndef PANICLIB_CONSOLE_H
 #define PANICLIB_CONSOLE_H
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+#include "Font.h"
+
 namespace Panic {
 
 
@@ -32,6 +35,8 @@ private:
 	SDL_Texture *texture;
 
 	bool enabled;
+
+	Font* fonty;
 };
 
 }
