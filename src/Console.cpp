@@ -16,7 +16,7 @@ Console::Console(int x, int y, int width, int height, SDL_Renderer* renderer) {
 	screenspace.h = height;
 
 	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, width, height);
-	fonty = new Font("terminus_bold", 16, 1, Panic::FontMode::SQUARE, renderer);
+	fonty = new Font("terminus_bold", 12, 3, Panic::FontMode::SQUARE, renderer);
 }
 
 int Console::getX() {

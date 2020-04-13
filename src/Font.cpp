@@ -46,14 +46,23 @@ Font::Font(std::string fontName, int pixelSize, int padding, FontMode mode, SDL_
 	// Render each glyph to the texture
 	for (wchar_t ch = MIN_CHAR; ch <= MAX_CHAR; ch++) {
 		SDL_Surface* surface = TTF_RenderGlyph_Solid(font, ch, {255,255,255});
-		SDL_Texture* glyph = SDL_CreateTextureFromSurface(renderer, surface);
-		SDL_Rect r {
-				lpad+(ch*(pixelSize+padding*2)),
-				vpad,
+		if(surface) {
+			SDL_Texture *glyph = SDL_CreateTextureFromSurface(renderer, surface);
+			SDL_Rect r{
+					lpad + (ch * (pixelSize + padding * 2)),
+					vpad,
+					fontWidth,
+					fontHeight,//surface->h/*+vpad*2*/, // For some font sizes, the surface height can change over time. I have no idea what causes this.
+			};
+
+			SDL_Rect dest {
+				0,
+				0,
 				fontWidth,
-				fontHeight+2,
-		};
-		SDL_RenderCopy(renderer, glyph, nullptr, &r);
+				fontHeight
+			};
+			SDL_RenderCopy(renderer, glyph, &dest, &r);
+		}
 	}
 	SDL_SetRenderTarget(renderer, nullptr);
 }
