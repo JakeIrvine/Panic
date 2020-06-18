@@ -7,6 +7,7 @@
 
 #include "Window.h"
 #include "Font.h"
+#include "GridConsole.h"
 
 namespace Panic {
 

@@ -7,9 +7,9 @@
 
 int main() {
 	Panic::init();
-	auto window = Panic::Window("Jake's Shitty Library Test Thing", 1000, 1000);
+	auto window = Panic::Window("Kernel's Shitty Library Test Thing", 1000, 1000);
 
-	window.createConsole(0, 0, 4590, 18, 0);
+	window.createConsole(0, 0, 4590, 1800, 0);
 	window.render();
 
 
@@ -22,8 +22,7 @@ int main() {
 			counter = 0;
 			if(window.getConsole(0)->getEnabled()) {
 				//window.getConsole(0)->disable();
-				window.getConsole(0)->setX(window.getConsole(0)->getX()-1);
-
+				//window.getConsole(0)->setX(window.getConsole(0)->getX()-1);
 			} else {
 				window.getConsole(0)->enable();
 			}
@@ -38,5 +37,4 @@ int main() {
 		SDL_Delay(timeToSleep);
 	}
 
-	std::this_thread::sleep_for(std::chrono::seconds(1000));
 }

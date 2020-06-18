@@ -33,6 +33,7 @@ private:
 	int lpad;
 	int rpad;
 
+	int pixelSize;
 };
 
 }

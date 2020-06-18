@@ -13,7 +13,7 @@ const int MAX_CHAR = 255;
 
 Font::Font(std::string fontName, int pixelSize, int padding, FontMode mode, SDL_Renderer* renderer) {
 	int y = pixelSize;
-
+	this->pixelSize = pixelSize;
 	font = TTF_OpenFont(("res/" + fontName + ".ttf").c_str(), pixelSize);
 
 	// Get the width of the font to determine if we need padding
@@ -28,8 +28,8 @@ Font::Font(std::string fontName, int pixelSize, int padding, FontMode mode, SDL_
 	}
 
 	vpad = padding;
-	lpad = padding + fontWidth/2;
-	rpad = padding + fontWidth/2;
+	lpad = padding;// + fontWidth/2;
+	rpad = padding;// + fontWidth/2;
 	if (fontWidth % 2 != 0) {
 		rpad ++; // Ensure that the pixels line up properly even if the width of the font is odd.
 	}
@@ -68,10 +68,16 @@ Font::Font(std::string fontName, int pixelSize, int padding, FontMode mode, SDL_
 }
 
 std::pair<SDL_Texture*, SDL_Rect> Font::getGlyph(wchar_t glyph) {
-	SDL_Rect rect = {
+	/**SDL_Rect rect = {
 			glyph*(fontWidth+rpad+lpad), // Perhaps add two?
 			0,
 			fontWidth+rpad+lpad,
+			fontHeight+vpad*2
+	};**/
+	SDL_Rect rect = {
+			glyph*(pixelSize+lpad+rpad), // Perhaps add two?
+			0,
+			pixelSize+lpad+rpad,
 			fontHeight+vpad*2
 	};
 	return std::pair<SDL_Texture*, SDL_Rect>(glyphCache, rect);

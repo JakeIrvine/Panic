@@ -4,6 +4,8 @@
 
 #include "Window.h"
 #include <cassert>
+#include <GridConsole.h>
+
 using namespace Panic;
 
 Window::Window(std::string title, int w, int h) {
@@ -46,7 +48,7 @@ void Window::render() {
 }
 
 Console *Window::createConsole(int x, int y, int w, int h, byte index) {
-	consoles[index] = new Console(x, y, w, h, renderer);
+	consoles[index] = new GridConsole(x, y, w, h, renderer, 18, 18);
 
 	return consoles[index];
 }
@@ -60,7 +62,5 @@ void Window::removeConsole(byte index) {
 }
 
 Font Window::createFont(std::string fontName, int pixelSize, int padding, FontMode mode) {
-	int x = 0;
-
 	return Font(fontName, pixelSize, padding, mode, renderer);
 }

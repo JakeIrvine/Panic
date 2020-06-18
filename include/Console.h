@@ -29,14 +29,14 @@ public:
 	void disable();
 	void enable();
 
-	void render(SDL_Renderer* renderer);
+	virtual void render(SDL_Renderer* renderer);
+	virtual void draw(SDL_Renderer* renderer);
 private:
 	SDL_Rect screenspace;
 	SDL_Texture *texture;
 
 	bool enabled;
 
-	Font* fonty;
 };
 
 }

@@ -16,7 +16,6 @@ Console::Console(int x, int y, int width, int height, SDL_Renderer* renderer) {
 	screenspace.h = height;
 
 	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, width, height);
-	fonty = new Font("terminus_bold", 12, 3, Panic::FontMode::SQUARE, renderer);
 }
 
 int Console::getX() {
@@ -66,15 +65,16 @@ void Console::disable() {
 void Console::render(SDL_Renderer* renderer) {
 	if (enabled) {
 		SDL_SetRenderTarget(renderer, texture);
-
-		SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
-		SDL_RenderClear(renderer);
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-		SDL_Rect r = {1, 2,3,4};
-		SDL_RenderCopy(renderer, fonty->glyphCache, nullptr, nullptr);
+		draw(renderer);
 		SDL_SetRenderTarget(renderer, nullptr);
 
 		SDL_RenderCopy(renderer, texture, nullptr, &screenspace);
 	}
+}
+
+void Console::draw(SDL_Renderer* renderer) {
+	SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
+	SDL_RenderClear(renderer);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 }
 
