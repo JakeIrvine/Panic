@@ -68,12 +68,7 @@ Font::Font(std::string fontName, int pixelSize, int padding, FontMode mode, SDL_
 }
 
 std::pair<SDL_Texture*, SDL_Rect> Font::getGlyph(wchar_t glyph) {
-	/**SDL_Rect rect = {
-			glyph*(fontWidth+rpad+lpad), // Perhaps add two?
-			0,
-			fontWidth+rpad+lpad,
-			fontHeight+vpad*2
-	};**/
+
 	SDL_Rect rect = {
 			glyph*(pixelSize+lpad+rpad), // Perhaps add two?
 			0,

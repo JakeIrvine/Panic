@@ -21,6 +21,7 @@ public:
 	int getGridWidth();
 
 	void draw(SDL_Renderer *renderer) override;
+	void print(std::string text, int x, int y);
 
 private:
 	int cellHeight;

@@ -45,4 +45,6 @@ void Panic::GridConsole::drawLetter(wchar_t letter, int x, int y, SDL_Renderer *
 	SDL_RenderCopy(renderer, letterTex.first, &letterTex.second, new SDL_Rect{x, y, cellWidth, cellHeight});
 }
 
+void Panic::GridConsole::print(std::string text, int x, int y) {
 
+}
