@@ -9,7 +9,7 @@ int main() {
 	Panic::init();
 	auto window = Panic::Window("Kernel's Shitty Library Test Thing", 1000, 1000);
 
-	window.createConsole(0, 0, 4590, 1800, 0);
+	window.createConsole(0, 0, 18*50, 18*50, 0);
 	window.render();
 
 

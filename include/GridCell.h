@@ -19,6 +19,7 @@ static const SDL_Color WHITE = SDL_Color{.r =  255,
 class GridCell {
 public:
 
+	GridCell(wchar_t letter);
 	GridCell(wchar_t letter, SDL_Color fg, SDL_Color bg);
 
 	// oh no now I have to make a Color class :(

@@ -6,6 +6,7 @@
 #define PANICLIB_GRIDCONSOLE_H
 
 #include "Console.h"
+#include "GridCell.h"
 
 namespace Panic {
 
@@ -30,6 +31,8 @@ private:
 	Font font;
 
 	void drawLetter(wchar_t letter, int x, int y, SDL_Renderer *renderer);
+
+	std::vector<std::vector<GridCell>> grid;
 };
 
 }

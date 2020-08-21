@@ -4,13 +4,22 @@
 
 #include <GridConsole.h>
 
-#include "GridConsole.h"
-
 Panic::GridConsole::GridConsole(int x, int y, int width, int height, SDL_Renderer *renderer, int pixelHeight,
 								int pixelWidth)
 								: Console(x, y, width, height, renderer), cellHeight(pixelHeight), cellWidth(pixelWidth),
-								font("terminus_bold", 16, 1, FontMode::SQUARE, renderer)
-								{}
+								font("terminus_bold", 18, 0, FontMode::SQUARE, renderer)
+								{
+	// intitalize the grid to be empty
+	for(int i=0; i<getGridWidth(); i++) {
+		// Create a row
+		grid.emplace_back();
+
+		// Populate that row
+		for(int j=0; j<getGridHeight(); j++) {
+			grid[i].emplace_back(' ');
+		}
+	}
+								}
 
 int Panic::GridConsole::getCellHeight() {
 	return cellHeight;
@@ -31,12 +40,12 @@ int Panic::GridConsole::getGridWidth() {
 void Panic::GridConsole::draw(SDL_Renderer *renderer) {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 
-	drawLetter('t', 100, 100, renderer);
-	drawLetter('e', 100+9, 100, renderer);
-	drawLetter('s', 100+9*2, 100, renderer);
-	drawLetter('t', 100+9*3, 100, renderer);
+	for(int x=0; x < grid.size(); x++) {
+		for(int y=0; y < grid[0].size(); y++) {
+			drawLetter('a'+x+y, cellWidth*x, cellHeight*y, renderer);
+		}
+	}
 
-	//SDL_RenderClear(renderer);
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 }
 
